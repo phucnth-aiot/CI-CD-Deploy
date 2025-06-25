@@ -37,7 +37,8 @@ jobs:
         run: docker pull ngthanhhoangphuc/my-fullstack-frontend:latest
 
       - name: 🛑 Stop and remove old containers
-        run: docker-compose down || true
+        run: docker-compose down
+        continue-on-error: true
 
       - name: 🚀 Start new containers
         run: docker-compose up -d
