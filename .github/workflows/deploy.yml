@@ -12,10 +12,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: 🐳 Build backend image
-        run: docker build -t your-dockerhub-username/my-fullstack-backend:latest ./Backend
+        run: docker build -t ngthanhhoangphuc/my-fullstack-backend:latest ./Backend
 
       - name: 🐳 Build frontend image
-        run: docker build -t your-dockerhub-username/my-fullstack-frontend:latest ./Frontend
+        run: docker build -t ngthanhhoangphuc/my-fullstack-frontend:latest ./Frontend
 
       - name: 🔑 Login to Docker Hub
         shell: bash
@@ -26,16 +26,16 @@ jobs:
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
       - name: 📤 Push backend image
-        run: docker push your-dockerhub-username/my-fullstack-backend:latest
+        run: docker push ngthanhhoangphuc/my-fullstack-backend:latest
 
       - name: 📤 Push frontend image
-        run: docker push your-dockerhub-username/my-fullstack-frontend:latest
+        run: docker push ngthanhhoangphuc/my-fullstack-frontend:latest
 
       - name: 📥 Pull backend image
-        run: docker pull your-dockerhub-username/my-fullstack-backend:latest
+        run: docker pull ngthanhhoangphuc/my-fullstack-backend:latest
 
       - name: 📥 Pull frontend image
-        run: docker pull your-dockerhub-username/my-fullstack-frontend:latest
+        run: docker pull ngthanhhoangphuc/my-fullstack-frontend:latest
 
       - name: 🛑 Stop and remove old containers
         run: docker-compose down || true
