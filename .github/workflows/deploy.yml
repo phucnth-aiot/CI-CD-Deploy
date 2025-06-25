@@ -18,7 +18,7 @@ jobs:
         run: docker build -t ngthanhhoangphuc/my-fullstack-frontend:latest ./Frontend
 
       - name: 🔑 Login to Docker Hub
-        shell: bash
+        shell: pwsh
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
