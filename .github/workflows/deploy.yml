@@ -18,10 +18,12 @@ jobs:
         run: docker build -t your-dockerhub-username/my-fullstack-frontend:latest ./Frontend
 
       - name: 🔑 Login to Docker Hub
+        shell: bash
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
-        run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        run: |
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
       - name: 📤 Push backend image
         run: docker push your-dockerhub-username/my-fullstack-backend:latest
