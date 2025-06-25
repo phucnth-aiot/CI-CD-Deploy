@@ -1,36 +1,44 @@
+version: "3.8"
 services:
   backend:
-    build:
-      context: ./Backend
+    image: ngthanhhoangphuc/my-fullstack-backend:latest
     container_name: backend
     ports:
-      - "3000:3000"  # Cổng backend
+      - "3000:3000"
     environment:
       - NODE_ENV=production
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=app_user
+      - MYSQL_PASSWORD=12345678
+      - MYSQL_DATABASE=Deploy_DB
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - REDIS_PASSWORD=123456abc
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_USERNAME=app_user
-      - DB_PASSWORD=12345678
-      - DB_DATABASE=Deploy_DB
     depends_on:
-      - redis
       - mysql
-    restart: unless-stopped
+      - redis
 
   frontend:
-    build:
-      context: ./Frontend
+    image: ngthanhhoangphuc/my-fullstack-frontend:latest
     container_name: frontend
     ports:
-      - "8080:3000"  # Cổng frontend
-    depends_on:
-      - backend
+      - "8080:3000"
     environment:
       - NODE_ENV=production
-    restart: unless-stopped
+    depends_on:
+      - backend
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: Deploy_DB
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: 12345678
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
 
   redis:
     image: redis:7-alpine
@@ -39,25 +47,7 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
-    environment:
-      - REDIS_PASSWORD=123456abc
-    restart: unless-stopped
-
-  mysql:
-    image: mysql:8.0
-    container_name: mysql
-    ports:
-      - "3307:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=12345678
-      - MYSQL_DATABASE=Deploy_DB
-      - MYSQL_USER=app_user
-      - MYSQL_PASSWORD=12345678
-    volumes:
-      - mysql_data:/var/lib/mysql
-    restart: unless-stopped
 
 volumes:
-  redis_data:
   mysql_data:
-  
+  redis_data:
