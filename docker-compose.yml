@@ -7,10 +7,11 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - MYSQL_HOST=mysql
-      - MYSQL_USER=app_user
-      - MYSQL_PASSWORD=12345678
-      - MYSQL_DATABASE=Deploy_DB
+      - DB_USERNAME=mysql
+      - DB_PORT=3306
+      - DB_USERNAME=app_user
+      - DB_PASSWORD=12345678
+      - DB_DATABASE=Deploy_DB
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:

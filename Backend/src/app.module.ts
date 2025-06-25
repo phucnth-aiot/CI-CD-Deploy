@@ -19,11 +19,11 @@ import { RedisModule as CustomRedisModule } from './modules/redis/redis.module';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         type: 'mysql',
-        host: configService.get<string>('MYSQL_HOST', 'mysql'),
+        host: configService.get<string>('DB_HOST', 'mysql'),
         port: configService.get<number>('DB_PORT', 3306),
-        username: configService.get<string>('MYSQL_USER', 'root'),
-        password: configService.get<string>('MYSQL_PASSWORD', ''),
-        database: configService.get<string>('MYSQL_DATABASE', 'notes_db'),
+        username: configService.get<string>('DB_USERNAME', 'root'),
+        password: configService.get<string>('DB_PASSWORD', ''),
+        database: configService.get<string>('DB_DATABASE', 'notes_db'),
         synchronize: true, // Only for development
         autoLoadEntities: true,
       }),
