@@ -1,0 +1,32 @@
+# Ignore node_modules
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Ignore build output
+dist
+.next
+out
+
+# Ignore version control
+.git
+.gitignore
+
+# Ignore env files
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignore lock files không cần thiết
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore cache và log
+.DS_Store
+*.log
+.cache
+
+# Ignore editor settings
+.vscode/
+.idea/

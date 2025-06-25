@@ -1,21 +1,21 @@
 // pages/index.tsx
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [count, setCount] = useState<number | null>(null);
+  const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/counter')
-      .then(response => setCount(response.data.value))
-      .catch(error => console.error('Error fetching counter:', error));
+    fetch(`http://localhost:3000/api/counter`)
+      .then((res) => res.json())
+      .then((data) => setCount(data.value));
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-2xl font-bold">
-        Số lượt truy cập: {count !== null ? count : 'Loading...'}
-      </h1>
-    </div>
+    <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
+      <div className="bg-white rounded-xl shadow-xl p-8 text-center">
+        <h1 className="text-3xl font-bold mb-2 text-blue-600">Số lượt truy cập</h1>
+        <p className="text-6xl text-blue-500">{count}</p>
+      </div>
+    </main>
   );
 }

@@ -1,18 +1,15 @@
-# Sử dụng image Node.js phiên bản 20
-FROM node:20-alpine
-
-# Thiết lập thư mục làm việc
+FROM node:20-alpine AS builder
 WORKDIR /app
-
-# Copy file package.json và cài đặt dependencies
 COPY package*.json ./
-RUN npm install
-
-# Copy toàn bộ mã nguồn
+RUN npm ci
 COPY . .
-
-# Build ứng dụng Next.js
 RUN npm run build
 
-# Chạy ứng dụng
+FROM node:20-alpine AS runner
+WORKDIR /app
+COPY --from=builder /app/package*.json ./
+RUN npm ci --omit=dev
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+EXPOSE 3000
 CMD ["npm", "start"]
