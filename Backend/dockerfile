@@ -1,15 +1,15 @@
-FROM node:20-alpine
-
-WORKDIR /usr/src/app
-
+# Bước 1: Builder
+FROM node:18-alpine as builder
+WORKDIR /app
 COPY package*.json ./
-
-RUN npm install
-
+RUN npm ci
 COPY . .
-
 RUN npm run build
 
-EXPOSE 3000
-
+# Bước 2: Run
+FROM node:18-alpine
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package*.json ./
+RUN npm ci --only=production
 CMD ["node", "dist/main.js"]

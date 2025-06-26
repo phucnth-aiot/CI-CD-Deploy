@@ -29,40 +29,53 @@ export default function NotesPage() {
     fetchNotes();
   };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-8">
-      <div className="max-w-2xl mx-auto bg-white shadow-xl p-6 rounded-xl">
-        <h1 className="text-2xl font-bold mb-4 text-green-600">Danh sách notes</h1>
-        <ul className="space-y-2 mb-6">
-          {notes.map((n) => (
-            <li key={n.id} className="border border-green-200 p-3 rounded-lg">
-              <h2 className="font-bold text-green-800">{n.title}</h2>
-              <p>{n.content}</p>
-              <button
-                onClick={() => deleteNote(n.id)}
-                className="mt-2 text-red-500 hover:underline"
-              >Xóa</button>
-            </li>
-          ))}
-        </ul>
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-100 to-emerald-200 p-8">
+    <div className="w-full max-w-2xl bg-white shadow-2xl p-8 rounded-2xl border border-emerald-200">
+      <h1 className="text-3xl font-extrabold mb-6 text-emerald-600 text-center tracking-tight">
+        📒 Danh sách Notes
+      </h1>
 
-        <h2 className="text-xl mb-2 text-green-700">Thêm note mới</h2>
-        <input
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="block border p-2 mb-2 w-full rounded"
-        />
-        <textarea
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="block border p-2 mb-2 w-full rounded"
-        />
-        <button
-          onClick={addNote}
-          className="bg-green-500 hover:bg-green-600 text-white p-2 rounded w-full"
-        >Thêm</button>
-      </div>
+      {/* Danh sách Notes */}
+      <ul className="space-y-4 mb-8 max-h-[50vh] overflow-y-auto pr-2">
+        {notes.map((n) => (
+          <li
+            key={n.id}
+            className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl shadow-sm hover:shadow-md transition"
+          >
+            <h2 className="font-bold text-xl text-emerald-700 mb-1">{n.title}</h2>
+            <p className="text-emerald-900 opacity-80">{n.content}</p>
+            <button
+              onClick={() => deleteNote(n.id)}
+              className="mt-3 text-sm text-red-500 hover:text-red-600 font-medium underline"
+            >
+              Xóa
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      {/* Form thêm note */}
+      <h2 className="text-2xl mb-4 text-emerald-700 font-semibold text-center">Thêm note mới</h2>
+      <input
+        placeholder="Tiêu đề"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="block border border-emerald-200 p-3 mb-3 w-full rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-400"
+      />
+      <textarea
+        placeholder="Nội dung"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        className="block border border-emerald-200 p-3 mb-4 w-full rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-emerald-400"
+        rows={4}
+      />
+      <button
+        onClick={addNote}
+        className="bg-emerald-500 hover:bg-emerald-600 text-white p-3 rounded-xl w-full font-semibold text-lg transition"
+      >
+        ✏️ Thêm
+      </button>
     </div>
-  );
+  </div>
+);
 }
