@@ -22,7 +22,7 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
-          echo docker login -u $env:DOCKER_USERNAME -p $env:DOCKER_PASSWORD
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
       - name: 📤 Push backend image
         run: docker push phuchoang109/my-fullstack-backend:latest
