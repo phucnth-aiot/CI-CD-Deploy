@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   backend:
-    image: phuchoang109/my-fullstack-backend:latest
+    image: ngthanhhoangphuc/my-fullstack-backend:latest
     container_name: backend
     ports:
       - "3000:3000"
@@ -19,7 +19,7 @@ services:
       - redis
 
   frontend:
-    image: phuchoang109/my-fullstack-frontend:latest
+    image: ngthanhhoangphuc/my-fullstack-frontend:latest
     container_name: frontend
     ports:
       - "8080:3000"
