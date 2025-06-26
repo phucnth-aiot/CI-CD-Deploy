@@ -14,6 +14,9 @@ export default function Home() {
     <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100">
       <div className="bg-white rounded-xl shadow-xl p-8 text-center">
         <h1 className="text-3xl font-bold mb-2 text-blue-600">Số lượt truy cập</h1>
+        <h1 className="text-3xl font-bold mb-2 text-blue-600">Số lượt truy cập</h1>
+        <h1 className="text-3xl font-bold mb-2 text-blue-600">Số lượt truy cập</h1>
+        <h1 className="text-3xl font-bold mb-2 text-blue-600">Số lượt truy cập</h1>
         <p className="text-6xl text-blue-500">{count}</p>
       </div>
     </main>
