@@ -29,6 +29,7 @@ export default function RedisAdmin() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 p-8">
       <div className="max-w-2xl mx-auto bg-white shadow-xl p-6 rounded-xl">
         <h1 className="text-2xl font-bold mb-4 text-purple-600">Redis Keys</h1>
+        <h1 className="text-2xl font-bold mb-4 text-purple-600">Nguyễn Thanh Hoàng Phúc</h1>
         <ul className="space-y-1 mb-4 max-h-48 overflow-y-auto border p-2 rounded">
           {keys.map((k) => (
             <li
