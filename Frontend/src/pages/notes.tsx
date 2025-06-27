@@ -1,5 +1,6 @@
 // pages/notes.tsx
 import { useEffect, useState } from "react";
+import 'tailwindcss';
 
 type Note = { id: number; title: string; content: string };
 

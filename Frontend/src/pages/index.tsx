@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Plus, Minus, RotateCcw, Loader2, TrendingUp } from "lucide-react";
+import 'tailwindcss';
 
 export default function Home() {
   const [count, setCount] = useState<number>(0);
@@ -238,6 +239,11 @@ export default function Home() {
           <div style={headerIconStyle}>
             <TrendingUp size={32} color="white" />
           </div>
+          <h1 style={titleStyle}>Counter App</h1>
+          <h1 style={titleStyle}>Counter App</h1>
+          <h1 style={titleStyle}>Counter App</h1>
+          <h1 style={titleStyle}>Counter App</h1>
+          <h1 style={titleStyle}>Counter App</h1>
           <h1 style={titleStyle}>Counter App</h1>
           <p style={subtitleStyle}>Theo dõi và quản lý số đếm của bạn</p>
         </div>
